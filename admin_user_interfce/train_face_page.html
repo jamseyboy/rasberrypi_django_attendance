@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J_A_App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/style/pages_stylsheet.css">
+    <script src="static/controller/registration.js"></script>
+</head>
+<body>
+    <header> 
+        <h1 style="padding: 10px;">Facial Recognition with Rasberry-pi</h1>
+        <h1>Train Machine Page</h1>
+        
+    </header>
+    <button  style="margin-left: 50px; width: 50px; height: 30px;" type="button" onclick="location.href='index.html'; ">Home</button>
+    <section>
+        <img src="static/images/logo.jpg" alt="logo" class="logo">
+        <div ng-app="registerApp">
+            <div class="form_container" ng-controller="trainMachine" >
+                <button class="registerbtn" type="button" ng-click="trainFaces()">Start Training faces</button>
+                <table >
+                    <tr>
+                        <th>Face detected details</th>
+                    </tr>
+                    
+                    <tbody ng-repeat="a in detectedFace" style="overflow-x: auto; height: 500px;">
+                        <tr>
+                            <td style="color: black;"><small>Face of {{a.face}} found !!</small></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </section>
+    <footer>
+        <h3>Created by James Lalringsan</h3>
+    </footer>
+</body>
+</html>

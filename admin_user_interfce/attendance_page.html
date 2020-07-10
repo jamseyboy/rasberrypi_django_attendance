@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J_A_App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-cookies.js"> </script>
+    <script src="static/controller/attendanceController.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/style/pages_stylsheet.css">
+</head>
+<body>
+    <header> 
+        <h1 style="padding: 10px;">Facial Recognition with Rasberry-pi</h1>
+        <h1>attendance page</h1>
+    </header>
+    <button  style="margin-left: 50px; width: 50px; height: 30px;" type="button" onclick="location.href='index.html'; ">Home</button>
+    <section>
+        <img src="static/images/logo.jpg" alt="logo" class="logo">
+        <div ng-app="attendanceApp" ng-controller="attendanceCtrl" >
+            <div class="form_container">
+            <form style="color: #ffffff;" name="form"> 
+              <label ><h1>From</h1> </label>
+                <input type="text" placeholder="YYYY-MM-DD" pattern="[2]{1}[0]{1}[0-9]{1}[0-9]{1}-[0-1]{1}[0-9]{1}-[0-9]{1}[0-9]{1}"  ng-model="inputFile.mydate" class="dateInput">
+                <small>Date Fromat YYYY-MM-DD</small><br><br>
+
+            <!--  
+                <label ><h1>To</h1> </label>
+                <input type="datetime-local"  ng-model="attendance.periodSecond" class="dateInput">
+                <small>Enter the time your class ended</small><br><br>
+            -->
+                <button class="registerbtn" type="button" ng-click="getattendance(inputFile)">Get Attendance</button>
+                <table >
+                    <tr>
+                        <td style="color: black;"><h1>Roll No.</h1></td>
+                        <td style="color: black;"><h1>Names</h1></td>
+                        <td style="color: black;"><h1>Time</h1></td>
+                        
+                    </tr>
+                    
+                    <tbody ng-repeat="a in stud_present" style="overflow-x: auto; height: 200px">
+                        <tr>
+                            <td style="color: black;"><small>{{a.roll}}</small></td>
+                            <td style="color: black;"><small>{{a.stud_name}}</small> </td>
+                            <td style="color: black;"><small>{{a.time}}</small></td>
+                        </tr>
+
+                    </tbody> 
+                </table>
+            </form>
+            </div>
+        </div>
+        
+    </section>
+    <footer>
+        <h3>Created by James Lalringsan</h3>
+    </footer>
+</body>
+</html>

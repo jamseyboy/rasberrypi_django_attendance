@@ -1,0 +1,75 @@
+body {font-family: Arial, Helvetica, sans-serif;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: relative;
+    margin-left: 100px;
+    margin-top: 0px;
+    background-image: url("D:/pune project/working_files/admin_user_interfce/static/images/background.jpg");
+    }
+    header{
+        background-color: #ffffff transparent !important;
+        color: #ffffff;
+        width: 900px;
+        height: 140px;
+        margin-left: 80px;
+        text-align: center;
+    }
+    footer {
+        border-top-style: solid;
+        padding: 10px;
+        width: 900px;
+        height: 140px;
+        text-align: center;
+        color: #ffffff;
+        margin-left: 75px;
+        margin-top: auto;
+      }
+    table{
+        background-color: #ffffff;
+        color: #000000;
+        text-align: left;
+        padding: 50px;
+        margin-left: 10px;
+        margin-top: 10px;
+        width: 450px;
+    }
+    td{
+      color: #ffffff;
+    }
+    .form_container {
+        padding: 16px;
+        margin-top: 20px;
+        margin-left: 280px;
+      }
+      img.logo {
+        width: 30%;
+        border-radius: 20%;
+        margin-left: 340px;
+      }
+    
+    input {
+      border: #000;
+      padding: 10px;
+      font-size: .8em;
+      width: 50%;
+    }
+    .registerbtn {
+      background-color: #0cb994 ;
+      color: #ffffff;
+      padding: 14px 20px;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+      width:50%;
+    }
+    button:hover {
+      opacity: 0.9;
+      background-color: #000000;
+      color: #ffffff;
+    }
+    .dateInput{
+      font-size: 1em;
+      width: 200px;
+      height: 30px;
+
+    }

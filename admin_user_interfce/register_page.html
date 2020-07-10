@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J_A_App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/style/pages_stylsheet.css">
+    <script src="static/controller/registration.js"></script>
+</head>
+<body>
+    <header> 
+        <h1 style="padding: 10px;">Facial Recognition with Rasberry-pi</h1>
+        <h1>Registration Page</h1>
+        
+    </header>
+    <button  style="margin-left: 50px; width: 50px; height: 30px;" type="button" onclick="location.href='index.html'; ">Home</button>
+    <section>
+        <div ng-app="registerApp">   
+            <div ng-controller="registerAppController">
+                <img src="static/images/logo.jpg" alt="logo" class="logo">
+                
+                <div class="form_container">
+                    <form style="color: #ffffff;" name="form">
+                        <label><h1>Student's Name:</h1></label>
+                        <input type="text" placeholder="Enter Student's full name"  ng-model="students.name"><br>
+                        <small>Enter Full Name</small>
+                        
+                        
+                        <label><h1>Student's Roll Number:</h1></label>
+                        <input type="text" placeholder="Enter Student's roll Number " ng-model="students.roll"><br>
+                        
+
+
+                        <label><h1>Studet's Class:</h1></label>
+                        <input type="text" placeholder="Enter Student's class" ng-model="students.class" ><br>
+                        
+
+
+                        <label><h1>Student's Phone Number:</h1></label>
+                        <input type="tel" placeholder="Enter 10 digit Phone Number " pattern="[0-9]{10}" ng-model="students.phoneNumber"><br>
+                        <small>Enter 10 digit phone Number</small><br><br>
+
+                        <label><h1>Enter Folder Label</h1></label>
+                        <input type="number" placeholder="Enter the folder Label" ng-model="students.folderLabel"><br>
+                        <small>Enter the correct Label else machine will get confused</small><br><br>
+
+                        <label><h1>Enter the Name for machine recognizability</h1></label>
+                        <input type="text" placeholder="Enter Names for Recognition" ng-model="students.nameRecog"><br>
+                        <small>This name will be used by machine to recognize a student</small><br>
+
+
+                        <br>
+                        <button type="button" class="registerbtn" ng-click="registerStudents(students)" >Register</button><br>
+                        <br>
+                        <button type="reset"  class="registerbtn">Reset</button>
+                    </form>
+                    <pre><h1 style="color: #28c409;">{{message}}</h1></pre>
+                </div>
+                
+                
+
+            </div> 
+        </div>
+    </section>
+    <footer style="color: black;">
+        <h3>Created by James Lalringsan</h3>
+    </footer>
+          
+</body>
+</html>
