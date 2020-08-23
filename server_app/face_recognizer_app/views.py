@@ -43,34 +43,36 @@ def recognize_face(imageData):
             label,confidence=face_recognizer.predict(roi_gray)
             print("Confidence : ",confidence)
             print("label :",label)
-            if(confidence>40):
+            if(confidence>60):
                 continue
-            getStudentDetails=model_queries(str(label)) 
+            getStudentDetails=model_queries(str(label))
             rollAndName=getStudentDetails.getRollAndStud_Name()
             for values in rollAndName:
                 myDict.update(values)
-                myDict["label"]=str(label)
-            db_serializer=attendance_serialize(myDict)
+            print("my dict",myDict)
+            db_serializer=attendance_serialize(data=myDict)
             if db_serializer.is_valid():
                 db_serializer.save()               
             print("Face found:",name[str(label)])
-        return JsonResponse(name[str(label)],safe=False)
+            return JsonResponse(name[str(label)],safe=False)
+        return JsonResponse("Can't Identify Retake Image",safe=False)
     except ValueError as e:
         return JsonResponse(e.args[0],status.HTTP_400_BAD_REQUEST)
 
 
 
-@api_view(["POST"])
-def trainNewFace():
-    #dir_name=str(dir_get[dir])   D:\pune project\server_app\face_recognizer_app\trainingImages
-    facesIDs=train_my_machine("D:/pune project/working_files/server_app/face_recognizer_app/trainingImages")
-    thelist=[]
-    for x in facesIDs:
-        getStudentDetails=model_queries(str(x))
-        rollAndName=getStudentDetails.getRollAndStud_Name()
-        for values in rollAndName:
-            thelist.append(values)
-    return JsonResponse(thelist,safe=False)
+class trainNewFace(APIView):
+    
+    def post(self,request,*args,**kwargs):
+        #dir_name=str(dir_get[dir])   D:\pune project\server_app\face_recognizer_app\trainingImages
+        facesIDs=train_my_machine("D:/pune project/working_files/server_app/face_recognizer_app/trainingImages")
+        thelist=[]
+        for x in facesIDs:
+            getStudentDetails=model_queries(str(x))
+            rollAndName=getStudentDetails.getRollAndStud_Name()
+            for values in rollAndName:
+                thelist.append(values)
+        return JsonResponse(thelist,safe=False)
 
 
 class testDb(APIView):

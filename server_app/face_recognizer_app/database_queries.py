@@ -11,10 +11,10 @@ class model_queries():
         return roll
     def getAttendenceCreatedDate(self):
         AttnDate=attendance_model.objects.filter(created_date=self.queryData).values("stud_name","rollNumber","created_date","created_time")
-        theDict={}
+        theDict=[]
         print("The queryset ",AttnDate)
         for x in AttnDate:
-            theDict.update(x)
+            theDict.append(x)
         
         return theDict
 

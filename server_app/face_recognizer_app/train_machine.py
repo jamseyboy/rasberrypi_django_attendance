@@ -3,8 +3,6 @@ import cv2
 
 def train_my_machine(dir_name):
     faces,faceID=fr.train_new_data(dir_name)
-    print("Faces",faces)
-    print("Face ID",faceID)
     face_recognizer=fr.face_classifier(faces,faceID)
     #fileName=(str(dir_name)+".yml")
     face_recognizer.write('trainingData.yml')

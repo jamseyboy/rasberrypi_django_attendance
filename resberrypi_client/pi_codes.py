@@ -2,6 +2,7 @@ import io
 import cv2
 import numpy
 import warnings
+import sendData
 
 
 
@@ -38,6 +39,9 @@ class attendance():
                         print("Image Found"+str((x,y,w,h)))
             cv2.imshow('frame',frame) 
             if cv2.waitKey(20) & 0xFF==ord('q'):
+                send_req=sendData.send_data(gray,faces)
+                req_response=send_req.send_request()
+                print("Found face of ",req_response)
                 break
         cap.release()
         cv2.destroyAllWindows()

@@ -28,8 +28,12 @@ var app=angular.module('registerApp',[])
                if(!mydata.student_class){
                     status=false
                 }
-               if(!mydata.folderLabel){
-                    status=false;
+               if(mydata.folderLabel==0){
+                    status=true;
+                }
+                else if(!mydata.folderLabel){
+                  status=false;
+
                 }
                if(!mydata.nameRecog){
                     status=false;
@@ -61,6 +65,7 @@ var app=angular.module('registerApp',[])
                             console.log(response.data)
                             if(response.data==1){
                                $scope.message="Sucessfully registered";
+                               alert('Sucessfully registered');
                            }
                           //  if(response.data==2){
                           //      $scope.message="Database error";
@@ -92,7 +97,7 @@ app.controller('trainMachine',function($http,$scope)
         $http({
 
             method:'POST',
-            url:"http://127.0.0.1:8000/trainNewFace/",
+            url:"http://127.0.0.1:8000/api/trainNewFace/",
             dataType:'json'
 
         }).then(function(response){

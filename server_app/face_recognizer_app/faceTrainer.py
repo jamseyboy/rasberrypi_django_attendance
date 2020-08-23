@@ -10,9 +10,9 @@ def detectFace(test_img):
 
 def train_new_data(directory):
     print("THE DIRECTORY",directory)
-    x,y,z=os.walk(directory)
+    for x,y,z in os.walk(directory):
+        print("THE FILENAME",z)
 
-    print("THE FILENAME",z)
     faces=[]
     faceID=[]
 
@@ -28,20 +28,22 @@ def train_new_data(directory):
             img_path=os.path.join(path,filename)
             print("Image Path is : ",img_path)
             print("id : ",id)
-            test_img=cv2.imread(img_path)
-            print("Test image",test_img)
-            if test_img is None:
-                print("Imge not loaded Properly")
+            try:
+                test_img=cv2.imread(img_path)
+                if test_img is None:
+                    print("Imge not loaded Properly")
+                    continue
+                faces_rect,gray_img=detectFace(test_img)
+                #print("faces_rect",faces_rect)
+                if len(faces_rect)!=1:
+                    continue
+                (x,y,w,h)=faces_rect[0]
+                roi_gray=gray_img[y:y+w,x:x+h]
+                faces.append(roi_gray)
+                faceID.append(int(id))
+            except:
+                print("Out of mermory error")
                 continue
-            faces_rect,gray_img=detectFace(test_img)
-            #print("faces_rect",faces_rect)
-            print("Gray image",gray_img)
-            if len(faces_rect)!=1:
-                continue
-            (x,y,w,h)=faces_rect[0]
-            roi_gray=gray_img[y:y+w,x:x+h]
-            faces.append(roi_gray)
-            faceID.append(int(id))
     print("roi_gray",roi_gray)
     print("faceID",faceID)
     return faces,faceID

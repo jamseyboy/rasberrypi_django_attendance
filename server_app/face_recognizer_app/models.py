@@ -16,12 +16,14 @@ class student_model(models.Model):
         return self.rollNumber,self.phoneNumber
 
 class attendance_model(models.Model):
+    current_time=datetime.datetime.now()
+
 
     stud_name=models.CharField(max_length=250)
-    rollNumber=models.CharField(max_length=20,unique=True)
-    label=models.IntegerField(unique=True)
+    rollNumber=models.CharField(max_length=20)
+    folderLabel=models.IntegerField()
     created_date=models.DateField(default=datetime.date.today)
-    created_time=models.TimeField(default=datetime.time(16,00))
+    created_time=models.TimeField(default=datetime.time(current_time.hour,current_time.minute))
 
     def __str__(self):
         return self.stud_name,self.rollNumber,self.created_date,self.created_time

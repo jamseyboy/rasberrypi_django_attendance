@@ -60,9 +60,12 @@ app.controller('attendanceCtrl',function($http,$scope){
     
                 if(response.data){
                     console.log(response.data)
+                    //console.log(response.data.stud_name)
+                    
+                    $scope.stud_present=response.data
                 }
                 else{
-                    console.log("Failuer")
+                    console.log("Failure")
                 }
     
             });
